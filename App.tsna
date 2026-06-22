@@ -3,7 +3,7 @@
 	"Description": "Log members in your Discord Server who are running an active game.",
 	"Author": ["Ascellayn"],
 	"Contributors": [],
-	"License": "TBD",
+	"License": "GNU GPLv3",
 	"License_Year": "2025-2026",
 	"Codename": "EPT_RPCDetector",
 	"Branch": "Main",
