@@ -22,9 +22,12 @@ TOKEN="{Discord Bot Token}"
     "Channel": 1283506671150174250 # The channel to post the reports
   },
   "Whitelist": [
-  311057290562371586,
-  ...
-  ] # The list of users that reports shouldn't be sent if they get detected by RPCd
+    311057290562371586,
+    ...
+  ], # The list of users/role IDs that reports shouldn't be sent if they get detected by RPCd
+  "Checklist": [
+    -1
+  ] # The list of users/role IDs to verify their RPC, "-1" means checking every user
 }
 ```
 - Install dependencies inside of a venv

@@ -18,7 +18,8 @@ class RPCd_JSON(TypedDict):
 	Active: bool;
 	Cooldown: int;
 	ID: RPCd_JSON_ID
-	Whitelist: list[str];
+	Whitelist: list[int];
+	Checklist: list[int];
 
 Cfg: RPCd_JSON = cast(RPCd_JSON, File.JSON_Read("Config.json"));
 if (Cfg == {}):
@@ -30,7 +31,8 @@ if (Cfg == {}):
 			"Guild": -1,
 			"Channel": -1
 		},
-		"Whitelist": []
+		"Whitelist": [],
+		"Checklist": [-1]
 	};
 	File.JSON_Write("Config.json", Cfg);
 	raise Exception("Please configure the ID entries in Config.json");

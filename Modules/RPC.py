@@ -10,8 +10,16 @@ async def Scan_Members() -> None:
 	G: discord.Guild | None = BOT.get_guild(Cfg["ID"]["Guild"]);
 	if (not G): raise Exception(f"Guild not found: \"{Cfg["ID"]["Guild"]}\"");
 	for m in G.members:
-		if (m.id in Cfg["Whitelist"]): continue;
 		if (not m.activities): continue;
+		if (m.id in Cfg["Whitelist"]): continue;
+
+		skip: bool = False if (-1 in Cfg["Checklist"]) else True;
+		for r in m.roles:
+			if (r.id in Cfg["Checklist"]): skip = False;
+			if (r.id in Cfg["Whitelist"]): skip = True;
+		if (m.id in Cfg["Checklist"]): skip = False;
+		if (skip): continue;
+
 		for a in m.activities:
 			if (a.type == discord.ActivityType.playing and type(a) == discord.Activity):
 				print(f"Found Activity by {m.name}: {a}");
